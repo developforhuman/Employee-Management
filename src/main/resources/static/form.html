@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axtarış forması</title>
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <form id="searchForm">
+        <div class="form-group">
+            <label class="mr-2">Axtarış növü:</label>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="searchType" id="searchByUsername" data-url="/api/v1/tasks/search" value="username" checked>
+                <label class="form-check-label" for="searchByUsername">İstifadəçi adına görə bitmiş tapşırıqlar</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="searchType" id="searchByDepartment" data-url="/api/v1/employees/search" value="department">
+                <label class="form-check-label" for="searchByDepartment">Departament adına və tapşırığın əlavəolunma tarixi intervalına görə axtarış</label>
+            </div>
+        </div>
+
+        <!-- Username input and search button -->
+        <div id="usernameInput" class="form-group">
+            <label for="username">İstifadəçi adı:</label>
+            <input type="text" class="form-control" placeholder="Adı daxil edin" id="username" name="username" required>
+        </div>
+
+        <!-- Department and Date Interval inputs -->
+        <div id="departmentAndDate" class="form-group d-none">
+            <label for="department">Departament adı:</label>
+            <input type="text" class="form-control" placeholder="Adı daxil edin" id="department" name="department">
+
+            <label for="startDate">Başlama tarixi:</label>
+            <input type="date" class="form-control" id="startDate" name="startDate">
+
+            <label for="endDate">Bitmə tarixi:</label>
+            <input type="date" class="form-control" id="endDate" name="endDate">
+        </div>
+
+        <button type="button" class="btn btn-primary" id="searchButton">Axtar</button>
+    </form>
+
+    <h3 class="resultHeader"></h3>
+
+    <div class="container mt-3">
+        <table class="table table-bordered" id="usernameTable" style="display: none;">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tapşırıq adı</th>
+                <th>Əməkdaş</th>
+                <th>Tapşırığın statusu</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Table body will be dynamically populated -->
+            </tbody>
+        </table>
+
+        <div id="usernamePaginator" class="mt-3"></div>
+    </div>
+
+    <div class="container mt-3">
+        <table class="table table-bordered" id="departmentTable" style="display: none;">
+
+        </table>
+    </div>
+</div>
+
+<!-- Bootstrap JS and jQuery -->
+<script src="js/jquery-3.6.4.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/search.js"></script>
+
+</body>
+</html>
