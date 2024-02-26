@@ -1,16 +1,17 @@
 package com.idrak.emp.controller;
 
 import com.idrak.emp.model.enums.TaskStatus;
+import com.idrak.emp.model.request.EmployeeSearchRequest;
+import com.idrak.emp.model.response.EmployeeTaskResponse;
 import com.idrak.emp.model.response.PageResponse;
+import com.idrak.emp.model.response.TaskEmployeeResponse;
 import com.idrak.emp.model.response.UserTaskResponse;
 import com.idrak.emp.service.TaskService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import java.util.List;
@@ -34,6 +35,12 @@ public class TaskController {
             @RequestParam(defaultValue = "1") @Min(1) int page,
             @RequestParam(defaultValue = "10") @Min(1) @Max(50) int size) {
         return ResponseEntity.ok(taskService.getUserTasksByUsernameAndTaskStatus(username, status, page, size));
+    }
+
+    @PostMapping("/search")
+    public ResponseEntity<List<TaskEmployeeResponse>> getEmployeeTaskList(
+            @RequestBody @Valid EmployeeSearchRequest request) {
+        return ResponseEntity.ok(taskService.findEmployeesWithTasksBetweenDatesAndDepartmentName(request));
     }
 
 }

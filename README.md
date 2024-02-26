@@ -14,6 +14,8 @@
    a. İstifadəçi adına görə bitmiş tapşırıqlar
    
    b. Departament adına və tapşırığın əlavəolunma tarixi intervalına görə axtarış (Test departament adı olaraq: Programming götürülüb)
+9. Əlavə olaraq Task Based search də hazırladım, istəyə görə hər iki metodu istifad
+etmək olar.
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first

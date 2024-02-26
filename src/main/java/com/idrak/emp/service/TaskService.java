@@ -1,8 +1,11 @@
 package com.idrak.emp.service;
 
 import com.idrak.emp.model.enums.TaskStatus;
+import com.idrak.emp.model.request.EmployeeSearchRequest;
 import com.idrak.emp.model.response.PageResponse;
+import com.idrak.emp.model.response.TaskEmployeeResponse;
 import com.idrak.emp.model.response.UserTaskResponse;
+
 import java.util.List;
 
 public interface TaskService {
@@ -10,5 +13,7 @@ public interface TaskService {
 
     PageResponse<UserTaskResponse> getUserTasksByUsernameAndTaskStatus(String username, TaskStatus taskStatus,
                                                                        int page, int size);
+
+    List<TaskEmployeeResponse> findEmployeesWithTasksBetweenDatesAndDepartmentName(EmployeeSearchRequest request);
 
 }
